@@ -1,0 +1,74 @@
+My simple calcultor in Python, source code.
+
+
+from tkinter import *
+
+def click(event):
+    global screen
+    text = event.widget.cget("text")
+    print(text)
+
+    if text == "=":
+        if screen.get().isdigit():
+            value=int(screen.get())
+        else:
+            eval(screen.get())
+        try:
+            value = eval(screen.get().replace("x", "*"))
+            screen.set(value)
+        except Exception as e:
+            screen.set("Error")
+    elif text == "C":
+        screen.set("")
+    else:
+          screen.set(screen.get() + text)
+      
+
+
+cal = Tk()
+cal.geometry("350x500")
+cal.title("Calculator")
+
+screen = StringVar()
+screen.set("")
+lcd = Entry(cal, textvar=screen, font="lavida 33 bold",bg="grey")
+lcd.pack(fill=X, padx=16, pady=25)
+
+
+f1 = Frame(cal, bg="grey")
+f1.pack(pady=5)
+
+for txt in ["1", "2", "3", "4"]:
+    b = Button(f1, text=txt, font="lucida 33 bold")
+    b.pack(side=LEFT, padx=7, pady=6)
+    b.bind("<Button-1>", click)
+
+
+f2 = Frame(cal, bg="grey")
+f2.pack(pady=5)
+
+for txt in ["5", "6", "7", "8"]:
+    b = Button(f2, text=txt, font="lucida 33 bold")
+    b.pack(side=LEFT, padx=7, pady=6)
+    b.bind("<Button-1>", click)
+
+
+f3 = Frame(cal, bg="grey")
+f3.pack(pady=5)
+
+for txt in ["9", "0", "+", "-"]:
+    b = Button(f3, text=txt, font="lucida 33 bold")
+    b.pack(side=LEFT, padx=8, pady=6)
+    b.bind("<Button-1>", click)
+
+
+f4 = Frame(cal, bg="grey")
+f4.pack(pady=5)
+
+for txt in ["/", "x", "C", "="]:
+    b = Button(f4, text=txt, font="lucida 33 bold")
+    b.pack(side=LEFT, padx=8, pady=6)
+    b.bind("<Button-1>", click)
+
+
+cal.mainloop()
