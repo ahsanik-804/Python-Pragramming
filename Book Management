@@ -1,0 +1,22 @@
+def my_book():
+    book=[]
+    with open ("kitab.txt" ,"r") as file:
+        file = file.readlines()
+    book=[line.strip() for line in file]
+
+    b=input("Enter a book to add:").strip().title()
+    a=input("Enter a book to search:").strip().title()
+    if b == "0" :
+        pass
+    else:
+        book.append(b)
+        with open("kitab.txt", "a") as file:
+           file.write(b + "\n")
+        print(book)
+        
+    if a in book:
+     print(a,"is available")
+    else:
+       print(a,"is not available")
+    
+my_book()
