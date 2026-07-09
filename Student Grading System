@@ -1,0 +1,24 @@
+def my_grading():
+    a=int(input("Enter math number:").strip())
+    b=int(input("Enter english number:").strip())
+    c=int(input("Enter urdu number:").strip())
+    if a>100 or b>100 or c>100:
+        print("Invalid marks entered. enter real marks between 0 and 100.")
+        return
+    total= a+b+c
+    p=round((total/300)*100,2)
+
+    if a < 33 or b < 33 or c < 33:
+        print("You Failed in exams and your total percentage is: ",p,"%")
+        return
+
+    if p>=80:
+        print("Grade is A+")
+    elif p>=60:
+        print("Grade is B")
+    else:
+        print("Grade is C")
+        
+    print("total marks percentage is: ",p,"%")
+
+my_grading()
