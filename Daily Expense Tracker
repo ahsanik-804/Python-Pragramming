@@ -1,0 +1,19 @@
+def expense_manager():
+    expenses=[]
+    total_cost=0
+    while True:
+     a=input("Enter item name:").strip().title()
+     if a=="0":
+         break
+     
+     b=int(input("Enter item cost:").strip())
+
+     expenses.append((a, b))
+
+     print("Item added successfully!")
+     print("Current expenses:", expenses)
+    for a, b in expenses:
+     total_cost +=b
+     print(f"* {a}: Rs. {b}")
+    print("Total expenses:", total_cost)
+expense_manager()
